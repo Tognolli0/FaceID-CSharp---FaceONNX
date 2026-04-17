@@ -32,6 +32,7 @@ Comparar duas imagens de rosto e indicar se pertencem ou nao a mesma pessoa com 
 2. Restaure os pacotes do projeto.
 3. Ajuste ou substitua as imagens da pasta `Images`.
 4. Execute a aplicacao via `dotnet run`.
+5. Opcionalmente, rode `dotnet run -- <imagem1> <imagem2> <threshold>` para testar outros arquivos e limiares.
 
 ## Resultado esperado
 
