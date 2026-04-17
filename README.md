@@ -1,24 +1,38 @@
-🤖 FaceID Demo - Reconhecimento Facial Offline
-Este projeto é uma prova de conceito (PoC) de um sistema de biometria facial desenvolvido em C# (.NET 8.0). O sistema é capaz de identificar se duas imagens pertencem à mesma pessoa utilizando inteligência artificial de ponta, rodando de forma 100% local.
+# FaceID CSharp FaceONNX
 
-🌟 Diferenciais Técnicos
-Privacidade e Custo Zero: Diferente de soluções em nuvem (Azure/AWS), este motor processa tudo localmente usando ONNX Runtime, garantindo que os dados biométricos não saiam da máquina.
+Prova de conceito de reconhecimento facial offline em C#, com comparacao de embeddings gerados localmente sem dependencia de servicos em nuvem.
 
-Calibração de Threshold: Implementação de um limiar de confiança ajustado (4.0) para lidar com variações reais de iluminação, ângulo e ruído de câmera, reduzindo falsos negativos.
+## Stack
 
-Arquitetura Robusta: Carregamento de imagens via buffer de memória para evitar conflitos de leitura em ambientes de sincronização (como OneDrive).
+- .NET 8
+- FaceONNX
+- ONNX Runtime
+- System.Drawing.Common
 
-🛠️ Tecnologias Utilizadas
-FaceONNX: Engine de Deep Learning para detecção e extração de características faciais.
+## Objetivo
 
-Microsoft.ML.OnnxRuntime: Runtime para execução de modelos de IA com alta performance.
+Comparar duas imagens de rosto e indicar se pertencem ou nao a mesma pessoa com processamento totalmente local.
 
-System.Drawing.Common: Manipulação e normalização de bitmaps.
+## Diferenciais
 
-📊 Como o Sistema Toma Decisões
-O sistema transforma o rosto humano em um vetor matemático de 512 dimensões. A comparação é feita através do cálculo da Distância Euclidiana:
+- Execucao offline
+- Sem custo por chamada em nuvem
+- Foco em privacidade
+- Threshold ajustavel para cenarios reais
 
-Distância Calculada,Veredito,Confiança
-0.0 - 0.5,Mesma Pessoa,Identidade Exata
-0.6 - 3.9,Mesma Pessoa,Reconhecimento com variação de ambiente
-> 4.0,Pessoas Diferentes,Acesso Negado / Intruso
+## Estrutura
+
+- `Program.cs`: fluxo principal de leitura e comparacao
+- `Images/`: imagens de exemplo
+- `FaceRecognitionDemo.csproj`: projeto principal
+
+## Como rodar
+
+1. Instale o .NET 8 SDK.
+2. Restaure os pacotes do projeto.
+3. Ajuste ou substitua as imagens da pasta `Images`.
+4. Execute a aplicacao via `dotnet run`.
+
+## Resultado esperado
+
+O programa calcula a distancia entre embeddings faciais e informa se as imagens representam a mesma pessoa dentro do threshold definido.
